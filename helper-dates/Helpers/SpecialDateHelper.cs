@@ -1,5 +1,6 @@
 ﻿using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Exceptions;
+using jwpro.DateHelper.Extensions;
 using System;
 using System.Linq;
 
@@ -183,6 +184,21 @@ namespace jwpro.DateHelper.Helpers
         public static bool IsNewYearsEve(DateTime input) => input == GetNewYearsEve(input.Year.ToString());
 
         public static bool IsPresidentsDay(DateTime input) => input == GetPresidentsDay(input.Year.ToString());
+
+        public static bool IsSpecialDate(DateTime input) => input.IsChristmasDay() ||
+            input.IsChristmasEve() ||
+            input.IsColumbusDay() ||
+            input.IsIndependenceDay() ||
+            input.IsLaborDay() ||
+            input.IsMartinLutherKingJrDay() ||
+            input.IsMemorialDay() ||
+            input.IsNewYearsDay() ||
+            input.IsNewYearsEve() ||
+            input.IsPresidentsDay() ||
+            input.IsThanksgivingDay() ||
+            input.IsThanksgivingDayAfter() ||
+            input.IsVeteransDay();
+
 
         public static bool IsThanksgivingDay(DateTime input) => input == GetThanksgivingDay(input.Year.ToString());
 

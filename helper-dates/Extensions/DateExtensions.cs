@@ -31,6 +31,8 @@ namespace jwpro.DateHelper.Extensions
 
         public static bool IsPresidentsDay(this DateTime input) => SpecialDateHelper.IsPresidentsDay(input);
 
+        public static bool IsSpecialDate(this DateTime input) => SpecialDateHelper.IsSpecialDate(input);
+
         public static bool IsThanksgivingDay(this DateTime input) => SpecialDateHelper.IsThanksgivingDay(input);
 
         public static bool IsThanksgivingDayAfter(this DateTime input) => SpecialDateHelper.IsThanksgivingDayAfter(

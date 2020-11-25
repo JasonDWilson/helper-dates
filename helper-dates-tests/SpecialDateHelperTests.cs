@@ -317,6 +317,31 @@ namespace helper_dates_tests
         }
 
         [Theory]
+        [InlineData("1/25/2020", false)]
+        [InlineData("1/1/2020", true)]
+        [InlineData("1/20/2020", true)]
+        [InlineData("2/17/2020", true)]
+        [InlineData("5/25/2020", true)]
+        [InlineData("7/4/2020", true)]
+        [InlineData("9/7/2020", true)]
+        [InlineData("10/12/2020", true)]
+        [InlineData("11/11/2020", true)]
+        [InlineData("11/26/2020", true)]
+        [InlineData("11/27/2020", true)]
+        [InlineData("12/24/2020", true)]
+        [InlineData("12/25/2020", true)]
+        [InlineData("12/31/2020", true)]
+        public void IsSpecialDateTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+            // act
+            var actual = SpecialDateHelper.IsSpecialDate(inputDate);
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
         [InlineData("11/25/2020", false)]
         [InlineData("11/27/2020", true)]
         public void IsThanksgivingDayAfterTest(string input, bool expected)
