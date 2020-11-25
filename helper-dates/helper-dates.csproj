@@ -15,6 +15,7 @@
     <RepositoryUrl>https://github.com/JasonDWilson/helper-dates</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>dates helper holidays business hours weekends weekdays</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
