@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/helper-dates/v16
+/.cr/personal/FavoritesList
+/.vs/helper-dates/DesignTimeBuild
+/helper-dates/.cr/personal/FavoritesList
+/helper-dates/.vs/helper-dates
+/helper-dates/bin/Debug/netstandard2.0
+/helper-dates/obj
+/helper-dates-tests/bin/Debug/net5.0
+/helper-dates-tests/obj
+/helper-dates-tests_old
