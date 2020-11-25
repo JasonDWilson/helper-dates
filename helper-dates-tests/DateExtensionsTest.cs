@@ -206,6 +206,43 @@ namespace helper_dates_tests
             Assert.Equal(expected, actual);
         }
 
+
+        [Theory]
+        [InlineData("11/1/2020", false)]
+        [InlineData("11/2/2020", true)]
+        [InlineData("11/3/2020", true)]
+        [InlineData("11/4/2020", true)]
+        [InlineData("11/5/2020", true)]
+        [InlineData("11/6/2020", true)]
+        [InlineData("11/7/2020", false)]
+        public void IsWeekDayTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+            // act
+            var actual = inputDate.IsWeekDay();
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/1/2020", true)]
+        [InlineData("11/2/2020", false)]
+        [InlineData("11/3/2020", false)]
+        [InlineData("11/4/2020", false)]
+        [InlineData("11/5/2020", false)]
+        [InlineData("11/6/2020", false)]
+        [InlineData("11/7/2020", true)]
+        public void IsWeekEndTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+            // act
+            var actual = inputDate.IsWeekEnd();
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
         [Theory]
         [InlineData("11/25/2020", "Christmas_Eve", false)]
         [InlineData("12/24/2020", "Christmas_Eve", true)]

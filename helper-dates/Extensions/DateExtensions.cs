@@ -38,6 +38,10 @@ namespace jwpro.DateHelper.Extensions
 
         public static bool IsVeteransDay(this DateTime input) => SpecialDateHelper.IsVeteransDay(input);
 
+        public static bool IsWeekDay(this DateTime input) => SpecialDateHelper.IsWeekDay(input);
+
+        public static bool IsWeekEnd(this DateTime input) => SpecialDateHelper.IsWeekEnd(input);
+
         public static IEnumerable<SpecialDates> SpecialDates(this DateTime input)
         {
             List<SpecialDates> result = new List<SpecialDates>();
