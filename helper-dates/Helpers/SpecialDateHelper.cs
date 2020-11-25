@@ -91,6 +91,14 @@ namespace jwpro.DateHelper.Helpers
             return DateTime.Parse($"12/31/{year}");
         }
 
+        public static DateTime GetPresidentsDay(string year)
+        {
+            if(string.IsNullOrWhiteSpace(year))
+                year = DateTime.Now.Year.ToString();
+
+            return DateTime.Parse($"2/17/{year}");
+        }
+
         public static DateTime GetSpecialDate(SpecialDates special, string year)
         {
             switch(special)
@@ -113,6 +121,8 @@ namespace jwpro.DateHelper.Helpers
                     return SpecialDateHelper.GetNewYearsDay(year);
                 case SpecialDates.New_Years_Eve:
                     return SpecialDateHelper.GetNewYearsEve(year);
+                case SpecialDates.Presidents_Day:
+                    return SpecialDateHelper.GetPresidentsDay(year);
                 default:
                     throw new NotSupportedSpecialDateException($"{special} is not a currently supported special date");
             }
@@ -136,5 +146,7 @@ namespace jwpro.DateHelper.Helpers
         public static bool IsNewYearsDay(DateTime input) => input == GetNewYearsDay(input.Year.ToString());
 
         public static bool IsNewYearsEve(DateTime input) => input == GetNewYearsEve(input.Year.ToString());
+
+        public static bool IsPresidentsDay(DateTime input) => input == GetPresidentsDay(input.Year.ToString());
     }
 }

@@ -110,6 +110,17 @@ namespace helper_dates_tests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void GetPresidentsDayTest()
+        {
+            // arrange
+            var expected = DateTime.Parse("2/17/2020");
+            // act
+            var actual = SpecialDateHelper.GetPresidentsDay("2020");
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
 
         [Theory]
         [InlineData("12/25/2020", "2020", SpecialDates.Christmas_Day)]
@@ -121,6 +132,7 @@ namespace helper_dates_tests
         [InlineData("5/25/2020", "2020", SpecialDates.Memorial_Day)]
         [InlineData("1/1/2020", "2020", SpecialDates.New_Years_Day)]
         [InlineData("12/31/2020", "2020", SpecialDates.New_Years_Eve)]
+        [InlineData("2/17/2020", "2020", SpecialDates.Presidents_Day)]
         public void GetSpecialDateTest(string inputExpected, string inputYear, SpecialDates special)
         {
             // arrange
@@ -263,6 +275,21 @@ namespace helper_dates_tests
 
             // act
             var actual = SpecialDateHelper.IsNewYearsEve(inputDate);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/25/2020", false)]
+        [InlineData("2/17/2020", true)]
+        public void IsPresidentsDayTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+
+            // act
+            var actual = SpecialDateHelper.IsPresidentsDay(inputDate);
 
             // assert
             Assert.Equal(expected, actual);
