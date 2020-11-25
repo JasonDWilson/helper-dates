@@ -190,5 +190,10 @@ namespace jwpro.DateHelper.Helpers
             GetThanksgivingDayAfter(input.Year.ToString());
 
         public static bool IsVeteransDay(DateTime input) => input == GetVeteransDay(input.Year.ToString());
+
+        public static bool IsWeekDay(DateTime input) => !IsWeekEnd(input);
+
+        public static bool IsWeekEnd(DateTime input) => (input.DayOfWeek == DayOfWeek.Saturday ||
+            input.DayOfWeek == DayOfWeek.Sunday);
     }
 }

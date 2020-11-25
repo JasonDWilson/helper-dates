@@ -245,10 +245,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsLaborDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -260,10 +258,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsMartinLutherKingJrDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -275,10 +271,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsMemorialDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -290,10 +284,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsNewYearsDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -305,10 +297,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsNewYearsEve(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -320,10 +310,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsPresidentsDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -335,10 +323,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsThanksgivingDayAfter(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -350,10 +336,8 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsThanksgivingDay(inputDate);
-
             // assert
             Assert.Equal(expected, actual);
         }
@@ -365,10 +349,44 @@ namespace helper_dates_tests
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-
             // act
             var actual = SpecialDateHelper.IsVeteransDay(inputDate);
+            // assert
+            Assert.Equal(expected, actual);
+        }
 
+        [Theory]
+        [InlineData("11/1/2020", false)]
+        [InlineData("11/2/2020", true)]
+        [InlineData("11/3/2020", true)]
+        [InlineData("11/4/2020", true)]
+        [InlineData("11/5/2020", true)]
+        [InlineData("11/6/2020", true)]
+        [InlineData("11/7/2020", false)]
+        public void IsWeekDayTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+            // act
+            var actual = SpecialDateHelper.IsWeekDay(inputDate);
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/1/2020", true)]
+        [InlineData("11/2/2020", false)]
+        [InlineData("11/3/2020", false)]
+        [InlineData("11/4/2020", false)]
+        [InlineData("11/5/2020", false)]
+        [InlineData("11/6/2020", false)]
+        [InlineData("11/7/2020", true)]
+        public void IsWeekEndTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+            // act
+            var actual = SpecialDateHelper.IsWeekEnd(inputDate);
             // assert
             Assert.Equal(expected, actual);
         }
