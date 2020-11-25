@@ -11,6 +11,10 @@
     <Description>A library with a number of date related helper functions and extenstions.</Description>
     <Copyright>2020</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/JasonDWilson/helper-dates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JasonDWilson/helper-dates</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dates helper holidays business hours weekends weekdays</PackageTags>
   </PropertyGroup>
 
 </Project>
