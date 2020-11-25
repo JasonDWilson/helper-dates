@@ -123,10 +123,35 @@ namespace jwpro.DateHelper.Helpers
                     return SpecialDateHelper.GetNewYearsEve(year);
                 case SpecialDates.Presidents_Day:
                     return SpecialDateHelper.GetPresidentsDay(year);
+                case SpecialDates.Thanksgiving_Day:
+                    return SpecialDateHelper.GetThanksgivingDay(year);
+                case SpecialDates.Thanksgiving_Day_After:
+                    return SpecialDateHelper.GetThanksgivingDayAfter(year);
                 default:
                     throw new NotSupportedSpecialDateException($"{special} is not a currently supported special date");
             }
         }
+
+        public static DateTime GetThanksgivingDay(string year)
+        {
+            if(string.IsNullOrWhiteSpace(year))
+                year = DateTime.Now.Year.ToString();
+
+            int thursdayCount = 0;
+            for(Int16 x = 1; x <= 30; x++)
+            {
+                var test = DateTime.Parse($"11/{x}/{year}");
+                if(test.DayOfWeek == DayOfWeek.Thursday)
+                {
+                    thursdayCount++;
+                    if(thursdayCount == 4)
+                        return test;
+                }
+            }
+            return DateTime.Now;
+        }
+
+        public static DateTime GetThanksgivingDayAfter(string year) => GetThanksgivingDay(year).AddDays(1);
 
         public static bool IsChristmasDay(DateTime input) => input == GetChristmasDay(input.Year.ToString());
 
@@ -148,5 +173,10 @@ namespace jwpro.DateHelper.Helpers
         public static bool IsNewYearsEve(DateTime input) => input == GetNewYearsEve(input.Year.ToString());
 
         public static bool IsPresidentsDay(DateTime input) => input == GetPresidentsDay(input.Year.ToString());
+
+        public static bool IsThanksgivingDay(DateTime input) => input == GetThanksgivingDay(input.Year.ToString());
+
+        public static bool IsThanksgivingDayAfter(DateTime input) => input ==
+            GetThanksgivingDayAfter(input.Year.ToString());
     }
 }

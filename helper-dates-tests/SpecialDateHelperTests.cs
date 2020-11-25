@@ -133,6 +133,8 @@ namespace helper_dates_tests
         [InlineData("1/1/2020", "2020", SpecialDates.New_Years_Day)]
         [InlineData("12/31/2020", "2020", SpecialDates.New_Years_Eve)]
         [InlineData("2/17/2020", "2020", SpecialDates.Presidents_Day)]
+        [InlineData("11/26/2020", "2020", SpecialDates.Thanksgiving_Day)]
+        [InlineData("11/27/2020", "2020", SpecialDates.Thanksgiving_Day_After)]
         public void GetSpecialDateTest(string inputExpected, string inputYear, SpecialDates special)
         {
             // arrange
@@ -141,6 +143,28 @@ namespace helper_dates_tests
             // act
             var actual = SpecialDateHelper.GetSpecialDate(special, inputYear);
 
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetThanksgivingDayAfterTest()
+        {
+            // arrange
+            var expected = DateTime.Parse("11/27/2020");
+            // act
+            var actual = SpecialDateHelper.GetThanksgivingDayAfter("2020");
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetThanksgivingDayTest()
+        {
+            // arrange
+            var expected = DateTime.Parse("11/26/2020");
+            // act
+            var actual = SpecialDateHelper.GetThanksgivingDay("2020");
             // assert
             Assert.Equal(expected, actual);
         }
@@ -290,6 +314,36 @@ namespace helper_dates_tests
 
             // act
             var actual = SpecialDateHelper.IsPresidentsDay(inputDate);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/25/2020", false)]
+        [InlineData("11/27/2020", true)]
+        public void IsThanksgivingDayAfterTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+
+            // act
+            var actual = SpecialDateHelper.IsThanksgivingDayAfter(inputDate);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/25/2020", false)]
+        [InlineData("11/26/2020", true)]
+        public void IsThanksgivingDayTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+
+            // act
+            var actual = SpecialDateHelper.IsThanksgivingDay(inputDate);
 
             // assert
             Assert.Equal(expected, actual);
