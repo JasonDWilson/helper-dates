@@ -1,10 +1,7 @@
 ﻿using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace helper_dates_tests
@@ -135,6 +132,7 @@ namespace helper_dates_tests
         [InlineData("2/17/2020", "2020", SpecialDates.Presidents_Day)]
         [InlineData("11/26/2020", "2020", SpecialDates.Thanksgiving_Day)]
         [InlineData("11/27/2020", "2020", SpecialDates.Thanksgiving_Day_After)]
+        [InlineData("11/11/2020", "2020", SpecialDates.Veterans_Day)]
         public void GetSpecialDateTest(string inputExpected, string inputYear, SpecialDates special)
         {
             // arrange
@@ -165,6 +163,17 @@ namespace helper_dates_tests
             var expected = DateTime.Parse("11/26/2020");
             // act
             var actual = SpecialDateHelper.GetThanksgivingDay("2020");
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetVeteransDayTest()
+        {
+            // arrange
+            var expected = DateTime.Parse("11/11/2020");
+            // act
+            var actual = SpecialDateHelper.GetVeteransDay("2020");
             // assert
             Assert.Equal(expected, actual);
         }
@@ -344,6 +353,21 @@ namespace helper_dates_tests
 
             // act
             var actual = SpecialDateHelper.IsThanksgivingDay(inputDate);
+
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("11/25/2020", false)]
+        [InlineData("11/11/2020", true)]
+        public void IsVeteransDayTest(string input, bool expected)
+        {
+            // arrange
+            var inputDate = DateTime.Parse(input);
+
+            // act
+            var actual = SpecialDateHelper.IsVeteransDay(inputDate);
 
             // assert
             Assert.Equal(expected, actual);

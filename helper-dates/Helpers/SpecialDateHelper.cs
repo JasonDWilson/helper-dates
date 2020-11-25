@@ -127,6 +127,8 @@ namespace jwpro.DateHelper.Helpers
                     return SpecialDateHelper.GetThanksgivingDay(year);
                 case SpecialDates.Thanksgiving_Day_After:
                     return SpecialDateHelper.GetThanksgivingDayAfter(year);
+                case SpecialDates.Veterans_Day:
+                    return SpecialDateHelper.GetVeteransDay(year);
                 default:
                     throw new NotSupportedSpecialDateException($"{special} is not a currently supported special date");
             }
@@ -153,6 +155,14 @@ namespace jwpro.DateHelper.Helpers
 
         public static DateTime GetThanksgivingDayAfter(string year) => GetThanksgivingDay(year).AddDays(1);
 
+        public static DateTime GetVeteransDay(string year)
+        {
+            if(string.IsNullOrWhiteSpace(year))
+                year = DateTime.Now.Year.ToString();
+
+            return DateTime.Parse($"11/11/{year}");
+        }
+
         public static bool IsChristmasDay(DateTime input) => input == GetChristmasDay(input.Year.ToString());
 
         public static bool IsChristmasEve(DateTime input) => input == GetChristmasEve(input.Year.ToString());
@@ -178,5 +188,7 @@ namespace jwpro.DateHelper.Helpers
 
         public static bool IsThanksgivingDayAfter(DateTime input) => input ==
             GetThanksgivingDayAfter(input.Year.ToString());
+
+        public static bool IsVeteransDay(DateTime input) => input == GetVeteransDay(input.Year.ToString());
     }
 }
