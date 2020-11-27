@@ -100,35 +100,35 @@ namespace jwpro.DateHelper.Helpers
             return DateTime.Parse($"2/17/{year}");
         }
 
-        public static DateTime GetSpecialDate(SpecialDates special, string year)
+        public static DateTime GetSpecialDate(SpecialDate special, string year)
         {
             switch(special)
             {
-                case SpecialDates.Christmas_Day:
+                case SpecialDate.Christmas_Day:
                     return SpecialDateHelper.GetChristmasDay(year);
-                case SpecialDates.Christmas_Eve:
+                case SpecialDate.Christmas_Eve:
                     return SpecialDateHelper.GetChristmasEve(year);
-                case SpecialDates.Columbus_Day:
+                case SpecialDate.Columbus_Day:
                     return SpecialDateHelper.GetColumbusDay(year);
-                case SpecialDates.Independence_Day:
+                case SpecialDate.Independence_Day:
                     return SpecialDateHelper.GetIndependenceDay(year);
-                case SpecialDates.Labor_Day:
+                case SpecialDate.Labor_Day:
                     return SpecialDateHelper.GetLaborDay(year);
-                case SpecialDates.Martin_Luther_King_Jr_Day:
+                case SpecialDate.Martin_Luther_King_Jr_Day:
                     return SpecialDateHelper.GetMartinLutherKingJrDay(year);
-                case SpecialDates.Memorial_Day:
+                case SpecialDate.Memorial_Day:
                     return SpecialDateHelper.GetMemorialDay(year);
-                case SpecialDates.New_Years_Day:
+                case SpecialDate.New_Years_Day:
                     return SpecialDateHelper.GetNewYearsDay(year);
-                case SpecialDates.New_Years_Eve:
+                case SpecialDate.New_Years_Eve:
                     return SpecialDateHelper.GetNewYearsEve(year);
-                case SpecialDates.Presidents_Day:
+                case SpecialDate.Presidents_Day:
                     return SpecialDateHelper.GetPresidentsDay(year);
-                case SpecialDates.Thanksgiving_Day:
+                case SpecialDate.Thanksgiving_Day:
                     return SpecialDateHelper.GetThanksgivingDay(year);
-                case SpecialDates.Thanksgiving_Day_After:
+                case SpecialDate.Thanksgiving_Day_After:
                     return SpecialDateHelper.GetThanksgivingDayAfter(year);
-                case SpecialDates.Veterans_Day:
+                case SpecialDate.Veterans_Day:
                     return SpecialDateHelper.GetVeteransDay(year);
                 default:
                     throw new NotSupportedSpecialDateException($"{special} is not a currently supported special date");

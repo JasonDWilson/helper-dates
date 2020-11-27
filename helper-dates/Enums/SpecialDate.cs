@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace jwpro.DateHelper.Enums
 {
-    public enum SpecialDates
+    public enum SpecialDate
     {
         Christmas_Eve = 122420,
         Christmas_Day = 122520,
         Columbus_Day = 101120,
+        Custom,
         Independence_Day = 70420,
         Labor_Day = 90720,
         Martin_Luther_King_Jr_Day = 12020,

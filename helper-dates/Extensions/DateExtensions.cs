@@ -44,11 +44,11 @@ namespace jwpro.DateHelper.Extensions
 
         public static bool IsWeekEnd(this DateTime input) => SpecialDateHelper.IsWeekEnd(input);
 
-        public static IEnumerable<SpecialDates> SpecialDates(this DateTime input)
+        public static IEnumerable<SpecialDate> SpecialDates(this DateTime input)
         {
-            List<SpecialDates> result = new List<SpecialDates>();
-            foreach(SpecialDates special in Enum.GetValues(typeof(SpecialDates)))
-                if(SpecialDateHelper.GetSpecialDate(special, input.Year.ToString()) == input)
+            List<SpecialDate> result = new List<SpecialDate>();
+            foreach(SpecialDate special in Enum.GetValues(typeof(SpecialDate)))
+                if(special != Enums.SpecialDate.Custom && SpecialDateHelper.GetSpecialDate(special, input.Year.ToString()) == input)
                     result.Add(special);
             return result;
         }
