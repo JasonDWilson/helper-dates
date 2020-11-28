@@ -12,3 +12,4 @@
 /helper-dates-tests/bin/Debug/net5.0
 /helper-dates-tests/obj
 /helper-dates-tests_old
+*.nupkg
