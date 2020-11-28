@@ -7,12 +7,12 @@ using Xunit;
 
 namespace helper_dates_tests
 {
-    public class BusinessDateManagerTests
+    public class BusinessDateManagerConfigurationTests
     {
         private BusinessDateManagerConfiguration _businessConfig;
         private IConfiguration _config;
 
-        public BusinessDateManagerTests()
+        public BusinessDateManagerConfigurationTests()
         {
             _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
@@ -21,18 +21,16 @@ namespace helper_dates_tests
         }
 
         [Theory]
-        [InlineData("New Years Eve", "12/31/2020")]
-        [InlineData("New Years Day", "1/1/2020")]
-        [InlineData("Thanksgiving Day", "11/26/2020")]
-        [InlineData("Day After Thanksgiving", "11/27/2020")]
-        public void PaidHolidayContentTest(string name, string inputDate)
+        [InlineData("Jasons Day", false)]
+        [InlineData("New Years Eve", true)]
+        [InlineData("New Years Day", true)]
+        [InlineData("Thanksgiving Day", true)]
+        [InlineData("Day After Thanksgiving", true)]
+        public void PaidHolidayContentTest(string name, bool expected)
         {
             // arrange
-            var expected = DateTime.Parse(inputDate);
-            var manager = new BusinesDateManager(_businessConfig);
             // act
-            var ph = manager.PaidHolidays.FirstOrDefault(x => x.Name == name);
-            var actual = ph.GetDate("2020");
+            var actual = _businessConfig.PaidHolidays.Any(x => x.Name == name);
             // assert
             Assert.Equal(expected, actual);
         }
@@ -41,9 +39,8 @@ namespace helper_dates_tests
         public void PaidHolidayCountTest()
         {
             // arrange
-            var manager = new BusinesDateManager(_businessConfig);
             // act
-            var count = manager.PaidHolidays.Count;
+            var count = _businessConfig.PaidHolidays.Count;
             // assert
             Assert.Equal(4, count);
         }
