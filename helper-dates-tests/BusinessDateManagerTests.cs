@@ -1,10 +1,8 @@
 ﻿using jwpro.DateHelper.Configuration;
+using jwpro.DateHelper.Managers;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace helper_dates_tests
@@ -31,8 +29,9 @@ namespace helper_dates_tests
         {
             // arrange
             var expected = DateTime.Parse(inputDate);
+            var manager = new BusinesDateManager(_businessConfig);
             // act
-            var ph = _businessConfig.PaidHolidays.FirstOrDefault(x => x.Name == name);
+            var ph = manager.PaidHolidays.FirstOrDefault(x => x.Name == name);
             var actual = ph.GetDate("2020");
             // assert
             Assert.Equal(expected, actual);
@@ -42,8 +41,9 @@ namespace helper_dates_tests
         public void PaidHolidayCountTest()
         {
             // arrange
+            var manager = new BusinesDateManager(_businessConfig);
             // act
-            var count = _businessConfig.PaidHolidays.Count;
+            var count = manager.PaidHolidays.Count;
             // assert
             Assert.Equal(4, count);
         }

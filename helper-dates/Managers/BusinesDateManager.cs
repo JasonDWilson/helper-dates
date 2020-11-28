@@ -1,9 +1,8 @@
 ﻿using jwpro.DateHelper.Configuration;
+using jwpro.DateHelper.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace jwpro.DateHelper.Managers
 {
@@ -21,5 +20,7 @@ namespace jwpro.DateHelper.Managers
                     return true;
             return false;
         }
+
+        public List<PaidHoliday> PaidHolidays { get { return _config.PaidHolidays; } }
     }
 }
