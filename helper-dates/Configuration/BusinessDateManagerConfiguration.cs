@@ -13,7 +13,8 @@ namespace jwpro.DateHelper.Configuration
         private string _businessDayBegin;
         private string _businessDayEnd;
 
-        private bool IsMilitaryTime(string time) { return Regex.IsMatch(time, @"([01]\d | 2[0 - 3])[0 - 5]\d"); }
+        private bool IsMilitaryTime(string time)
+        { return Regex.IsMatch(time, @"^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"); }
 
         public string BusinessDayBegin
         {

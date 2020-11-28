@@ -27,6 +27,24 @@ namespace helper_dates_tests
         }
 
         [Theory]
+        [InlineData("11/2/2020 08:00","11/2/2020 17:00",9.0)] // normal difference
+        [InlineData("11/2/2020 17:00","11/2/2020 08:00",0)] // negative difference
+        [InlineData("11/2/2020 08:00","11/2/2020 18:00",9.0)] // ends after hours difference
+        [InlineData("11/2/2020 08:00","11/3/2020 09:00",10.0)] // crosses a day
+        [InlineData("11/2/2020 18:00","11/3/2020 09:00",1.0)] // crosses a day - begins after hours
+        [InlineData("11/6/2020 08:00","11/9/2020 09:00",10.0)] // crosses a weekend - begins after hours
+        public void GetBusinessHoursTest(string begin, string end, double expected)
+        {
+            // arrange
+            var beginDate = DateTime.Parse(begin);
+            var endDate = DateTime.Parse(end);
+            // act
+            double actual = _manager.GetBusinessHours(beginDate, endDate);
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
         [InlineData("12/21/2020", false)]
         [InlineData("12/25/2020", true)]
         [InlineData("7/4/2020", true)]
