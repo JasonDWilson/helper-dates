@@ -22,6 +22,11 @@ namespace helper_dates_tests
 
         [Theory]
         [InlineData("Jasons Day", false)]
+        [InlineData("Christmas Day", true)]
+        [InlineData("Christmas Eve", true)]
+        [InlineData("Independence Day", true)]
+        [InlineData("Labor Day", true)]
+        [InlineData("Memorial Day", true)]
         [InlineData("New Years Eve", true)]
         [InlineData("New Years Day", true)]
         [InlineData("Thanksgiving Day", true)]
@@ -42,7 +47,7 @@ namespace helper_dates_tests
             // act
             var count = _businessConfig.PaidHolidays.Count;
             // assert
-            Assert.Equal(4, count);
+            Assert.Equal(9, count);
         }
     }
 }

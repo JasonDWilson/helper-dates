@@ -16,7 +16,7 @@ namespace jwpro.DateHelper.Managers
         public bool IsPaidHoliday(DateTime input)
         {
             foreach(var holiday in _config.PaidHolidays)
-                if(holiday.GetDate() == input)
+                if(holiday.GetDate(input.Year.ToString()) == input)
                     return true;
             return false;
         }

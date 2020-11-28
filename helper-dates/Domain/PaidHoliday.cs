@@ -35,7 +35,7 @@ namespace jwpro.DateHelper.Domain
         {
             // make sure year is provided
             if(string.IsNullOrWhiteSpace(year))
-                year = DateTime.Now.ToString();
+                year = DateTime.Now.Year.ToString();
 
             // use related special date as override
             if(RelatedSpecialDate != 0 && RelatedSpecialDate != SpecialDate.Custom)
