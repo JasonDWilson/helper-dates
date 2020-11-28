@@ -12,6 +12,25 @@ namespace jwpro.DateHelper.Domain
     {
         private string _name;
 
+        public PaidHoliday()
+        {
+        }
+        public PaidHoliday(SpecialDate associatedSpecial) => AssociatedSpecialDate = associatedSpecial;
+
+        public PaidHoliday(string name, Func<string, DateTime> dateCalculation)
+        {
+            Name = name;
+            DateCalculation = dateCalculation;
+        }
+
+        public PaidHoliday(string name, SpecialDate relatedSpecial, int relatedSpecialOffset)
+        {
+            Name = name;
+            RelatedSpecialDate = relatedSpecial;
+            RelatedSpecialDateOffset = relatedSpecialOffset;
+        }
+
+
         public DateTime? GetDate(string year = null)
         {
             // make sure year is provided
