@@ -16,7 +16,11 @@ namespace helper_dates_tests
 
         public BusinessDateManagerConfigurationTests()
         {
-            _config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            _config = new ConfigurationBuilder().AddJsonFile(
+                "C:\\source\\git\\JasonDWilson\\helper-business-dates\\helper-dates-tests\\bin\\Debug\\net5.0\\appsettings.json",
+                optional: false,
+                reloadOnChange: true)
+                .Build();
             _businessConfig = new BusinessDateManagerConfiguration();
             _config.GetSection("BusinessDateManagerConfiguration").Bind(_businessConfig);
         }
