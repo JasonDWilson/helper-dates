@@ -120,20 +120,18 @@ namespace helper_dates_tests
 
 
         [Theory]
-        [InlineData("12/25/2020", "2020", SpecialDates.Christmas_Day)]
-        [InlineData("12/24/2020", "2020", SpecialDates.Christmas_Eve)]
-        [InlineData("10/12/2020", "2020", SpecialDates.Columbus_Day)]
-        [InlineData("7/4/2020", "2020", SpecialDates.Independence_Day)]
-        [InlineData("9/7/2020", "2020", SpecialDates.Labor_Day)]
-        [InlineData("1/20/2020", "2020", SpecialDates.Martin_Luther_King_Jr_Day)]
-        [InlineData("5/25/2020", "2020", SpecialDates.Memorial_Day)]
-        [InlineData("1/1/2020", "2020", SpecialDates.New_Years_Day)]
-        [InlineData("12/31/2020", "2020", SpecialDates.New_Years_Eve)]
-        [InlineData("2/17/2020", "2020", SpecialDates.Presidents_Day)]
-        [InlineData("11/26/2020", "2020", SpecialDates.Thanksgiving_Day)]
-        [InlineData("11/27/2020", "2020", SpecialDates.Thanksgiving_Day_After)]
-        [InlineData("11/11/2020", "2020", SpecialDates.Veterans_Day)]
-        public void GetSpecialDateTest(string inputExpected, string inputYear, SpecialDates special)
+        [InlineData("12/25/2020", "2020", SpecialDate.Christmas_Day)]
+        [InlineData("10/12/2020", "2020", SpecialDate.Columbus_Day)]
+        [InlineData("7/4/2020", "2020", SpecialDate.Independence_Day)]
+        [InlineData("9/7/2020", "2020", SpecialDate.Labor_Day)]
+        [InlineData("1/20/2020", "2020", SpecialDate.Martin_Luther_King_Jr_Day)]
+        [InlineData("5/25/2020", "2020", SpecialDate.Memorial_Day)]
+        [InlineData("1/1/2020", "2020", SpecialDate.New_Years_Day)]
+        [InlineData("12/31/2020", "2020", SpecialDate.New_Years_Eve)]
+        [InlineData("2/17/2020", "2020", SpecialDate.Presidents_Day)]
+        [InlineData("11/26/2020", "2020", SpecialDate.Thanksgiving_Day)]
+        [InlineData("11/11/2020", "2020", SpecialDate.Veterans_Day)]
+        public void GetSpecialDateTest(string inputExpected, string inputYear, SpecialDate special)
         {
             // arrange
             var expected = DateTime.Parse(inputExpected);

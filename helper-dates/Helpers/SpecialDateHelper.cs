@@ -106,8 +106,6 @@ namespace jwpro.DateHelper.Helpers
             {
                 case SpecialDate.Christmas_Day:
                     return SpecialDateHelper.GetChristmasDay(year);
-                case SpecialDate.Christmas_Eve:
-                    return SpecialDateHelper.GetChristmasEve(year);
                 case SpecialDate.Columbus_Day:
                     return SpecialDateHelper.GetColumbusDay(year);
                 case SpecialDate.Independence_Day:
@@ -126,8 +124,6 @@ namespace jwpro.DateHelper.Helpers
                     return SpecialDateHelper.GetPresidentsDay(year);
                 case SpecialDate.Thanksgiving_Day:
                     return SpecialDateHelper.GetThanksgivingDay(year);
-                case SpecialDate.Thanksgiving_Day_After:
-                    return SpecialDateHelper.GetThanksgivingDayAfter(year);
                 case SpecialDate.Veterans_Day:
                     return SpecialDateHelper.GetVeteransDay(year);
                 default:

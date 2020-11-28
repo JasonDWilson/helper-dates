@@ -269,8 +269,6 @@ namespace helper_dates_tests
         }
 
         [Theory]
-        [InlineData("11/25/2020", "Christmas_Eve", false)]
-        [InlineData("12/24/2020", "Christmas_Eve", true)]
         [InlineData("11/25/2020", "Christmas_Day", false)]
         [InlineData("12/25/2020", "Christmas_Day", true)]
         [InlineData("11/25/2020", "Columbus_Day", false)]
@@ -291,15 +289,13 @@ namespace helper_dates_tests
         [InlineData("2/17/2020", "Presidents_Day", true)]
         [InlineData("11/25/2020", "Thanksgiving_Day", false)]
         [InlineData("11/26/2020", "Thanksgiving_Day", true)]
-        [InlineData("11/25/2020", "Thanksgiving_Day_After", false)]
-        [InlineData("11/27/2020", "Thanksgiving_Day_After", true)]
         [InlineData("11/25/2020", "Veterans_Day", false)]
         [InlineData("11/11/2020", "Veterans_Day", true)]
         public void SpecialDatesTest(string input, string special, bool expected)
         {
             // arrange
             var inputDate = DateTime.Parse(input);
-            var inputSpecial = (SpecialDates)Enum.Parse(typeof(SpecialDates), special);
+            var inputSpecial = (SpecialDate)Enum.Parse(typeof(SpecialDate), special);
             // act
             var specialDates = inputDate.SpecialDates();
             var isContained = specialDates.Contains(inputSpecial);

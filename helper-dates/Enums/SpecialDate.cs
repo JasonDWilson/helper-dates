@@ -8,7 +8,6 @@ namespace jwpro.DateHelper.Enums
 {
     public enum SpecialDate
     {
-        Christmas_Eve = 122420,
         Christmas_Day = 122520,
         Columbus_Day = 101120,
         Custom,
@@ -20,7 +19,6 @@ namespace jwpro.DateHelper.Enums
         New_Years_Eve = 123120,
         Presidents_Day = 21720,
         Thanksgiving_Day = 112620,
-        Thanksgiving_Day_After = 112720,
         Veterans_Day = 111120,
     }
 }
