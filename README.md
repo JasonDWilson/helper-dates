@@ -4,8 +4,6 @@
 
 ## Current primary functions:
 - identify special dates or holidays
-
-## Primary functions coming soon:
 - business related functions
 
 ### To use helper functions:
@@ -26,7 +24,51 @@ using jwpro.DateHelper.Extensions;
 ```
 3. Call extension methods from any DataTime variable
 
-*Would love to other contribute*
+### To use Business Date Manager
+1. Add a reference **helper-dates**
+2. Add the namespace directive:
+```csharp
+using jwpro.DateHelper.Configuration;
+using jwpro.DateHelper.Managers;
+```
+3. The constructor for **BusinessDateManager** expects an instance of **BusinessDateManagerConfiguration** to be injected
+4. This can be accomplished by adding at **BusinessDateManagerConfiguration** section to your *appsettings.json* file like this:
+```xml
+	"BusinessDateManagerConfiguration": {
+		"PaidHolidays": [
+			{
+				"AssociatedSpecialDate": "Thanksgiving_Day"
+			},
+			{
+				"Name": "Day After Thanksgiving",
+				"RelatedSpecialDate": "Thanksgiving_Day",
+				"RelatedSpecialDateOffset": 1
+			},
+			{
+				"Name": "New Years Eve",
+				"RelatedSpecialDate": "New_Years_Day",
+				"RelatedSpecialDateOffset": 365
+			},
+			{
+				"AssociatedSpecialDate": "New_Years_Day"
+			}
+		]
+	}
+```
+   a. The **PaidHoliday** class expects either
+      i. An **AssociatedSpecialDate** that matches a value on the **SpecialDate** enum or
+      ii. A **Name** and a **RelatedSpecialDate** with an appropriate **RelatedSpecialDateOffset** or
+      iii. A **Name** and a **DateCalculation**
+5. The values can **BusinessDateManagerConfiguration** can be configured to be injected in the **BusinessDateManager** like this:
+```csharp
+  _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+  _businessConfig = new BusinessDateManagerConfiguration();
+  _config.GetSection("BusinessDateManagerConfiguration").Bind(_businessConfig);
+  _services.AddSingleton<BusinessDateManagerConfiguration>(_businesConfig);
+```
+
+*Would love for others to contribute*
 
 *If you have any questions - drop me a note*
 
