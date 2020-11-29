@@ -33,32 +33,32 @@ using jwpro.DateHelper.Managers;
 ```
 3. The constructor for **BusinessDateManager** expects an instance of **BusinessDateManagerConfiguration** to be injected
 4. This can be accomplished by adding at **BusinessDateManagerConfiguration** section to your *appsettings.json* file like this:
-```xml
-	"BusinessDateManagerConfiguration": {
-		"PaidHolidays": [
-			{
-				"AssociatedSpecialDate": "Thanksgiving_Day"
-			},
-			{
-				"Name": "Day After Thanksgiving",
-				"RelatedSpecialDate": "Thanksgiving_Day",
-				"RelatedSpecialDateOffset": 1
-			},
-			{
-				"Name": "New Years Eve",
-				"RelatedSpecialDate": "New_Years_Day",
-				"RelatedSpecialDateOffset": 365
-			},
-			{
-				"AssociatedSpecialDate": "New_Years_Day"
-			}
-		]
-	}
+```json
+"BusinessDateManagerConfiguration": {
+	"PaidHolidays": [
+		{
+			"AssociatedSpecialDate": "Thanksgiving_Day"
+		},
+		{
+			"Name": "Day After Thanksgiving",
+			"RelatedSpecialDate": "Thanksgiving_Day",
+			"RelatedSpecialDateOffset": 1
+		},
+		{
+			"Name": "New Years Eve",
+			"RelatedSpecialDate": "New_Years_Day",
+			"RelatedSpecialDateOffset": 365
+		},
+		{
+			"AssociatedSpecialDate": "New_Years_Day"
+		}
+	]
+}
 ```
-   a. The **PaidHoliday** class expects either
-      i. An **AssociatedSpecialDate** that matches a value on the **SpecialDate** enum or
-      ii. A **Name** and a **RelatedSpecialDate** with an appropriate **RelatedSpecialDateOffset** or
-      iii. A **Name** and a **DateCalculation**
+- The **PaidHoliday** class expects either
+	- An **AssociatedSpecialDate** that matches a value on the **SpecialDate** enum or
+	- A **Name** and a **RelatedSpecialDate** with an appropriate **RelatedSpecialDateOffset** or
+	- A **Name** and a **DateCalculation**
 5. The values can **BusinessDateManagerConfiguration** can be configured to be injected in the **BusinessDateManager** like this:
 ```csharp
   _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -66,6 +66,20 @@ using jwpro.DateHelper.Managers;
   _businessConfig = new BusinessDateManagerConfiguration();
   _config.GetSection("BusinessDateManagerConfiguration").Bind(_businessConfig);
   _services.AddSingleton<BusinessDateManagerConfiguration>(_businesConfig);
+```
+6. Use to BusinessDateManager to do the following:
+- Determine if a date is a **PaidHoliday**:
+```csharp
+   var actual = _manager.IsPaidHoliday(inputDate);
+```
+- Get the number of business hours between 2 dates:
+```csharp
+    double actual = _manager.GetBusinessHours(beginDate, endDate);
+```
+- Get the date a specific **PaidHoliday**
+```csharp
+    var paidHoliday = _manager.PaidHolidays.FirstOrDefault(x => x.AssociatedSpecialDate == SpecialDate.Thanksgiving_Day);
+    DateTime thanksgiving = paidHoliday.GetDate(year: "2020"); 
 ```
 
 *Would love for others to contribute*
