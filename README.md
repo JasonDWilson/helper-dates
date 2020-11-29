@@ -1,6 +1,6 @@
 # jwPro Date Helpers
 
-*This project contains of number of date related to helper functions and extension methods.*
+*This project contains of number of date related helper functions and extension methods.*
 
 ## Current primary functions:
 - identify special dates or holidays
