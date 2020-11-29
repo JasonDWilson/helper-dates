@@ -81,6 +81,8 @@ using jwpro.DateHelper.Managers;
 4. This can be accomplished by adding at **BusinessDateManagerConfiguration** section to your *appsettings.json* file like this:
 ```json
 "BusinessDateManagerConfiguration": {
+	"BusinessDayBegin": "08:00",
+	"BusinessDayEnd":  "17:00",
 	"PaidHolidays": [
 		{
 			"AssociatedSpecialDate": "Thanksgiving_Day"
