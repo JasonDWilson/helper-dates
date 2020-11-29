@@ -14,6 +14,36 @@ using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Helpers;
 ```
 3. Call methods using the **SpecialDateHelper** static class
+- **GetChristmasDay**
+- **GetChristmasEve**
+- **GetColumbusDay**
+- **GetIndependenceDay**
+- **GetLaborDay**
+- **GetMartinLutherKingJrDay**
+- **GetMemorialDay**
+- **GetNewYearsDay**
+- **GetNewYearsEve**
+- **GetPresidentsDay**
+- **GetSpecialDate**
+- **GetThanksgivingDay**
+- **GetThanksgivingDayAfter**
+- **GetVeteransDay**
+- **IsChristmasDay**
+- **IsChristmasEve**
+- **IsColumbusDay**
+- **IsIndependenceDay**
+- **IsLaborDay**
+- **IsMartinLutherKingJrDay**
+- **IsMemorialDay**
+- **IsNewYearsDay**
+- **IsNewYearsEve**
+- **IsPresidentsDay**
+- **IsSpecialDate**
+- **IsThanksgivingDay**
+- **IsThanksgivingDayAfter**
+- **IsVeteransDay**
+- **IsWeekday**
+- **IsWeekend**
 
 ### To use extension methods:
 1. Add a reference **helper-dates**
@@ -23,6 +53,22 @@ using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Extensions;
 ```
 3. Call extension methods from any DataTime variable
+- **IsChristmasDay**
+- **IsChristmasEve**
+- **IsColumbusDay**
+- **IsIndependenceDay**
+- **IsLaborDay**
+- **IsMartinLutherKingJrDay**
+- **IsMemorialDay**
+- **IsNewYearsDay**
+- **IsNewYearsEve**
+- **IsPresidentsDay**
+- **IsSpecialDate**
+- **IsThanksgivingDay**
+- **IsThanksgivingDayAfter**
+- **IsVeteransDay**
+- **IsWeekday**
+- **IsWeekend**
 
 ### To use Business Date Manager
 1. Add a reference **helper-dates**
