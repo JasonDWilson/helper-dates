@@ -5,7 +5,7 @@
     <RootNamespace>jwpro.DateHelper</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Jason D Wilson</Authors>
     <Company>jwpro</Company>
     <Description>A library with a number of date related helper functions and extenstions.</Description>
@@ -16,6 +16,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>dates helper holidays business hours weekends weekdays</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Added business functions to BusinessDateManager class</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
