@@ -31,6 +31,7 @@ namespace helper_dates_tests
         [InlineData("New Years Day", true)]
         [InlineData("Thanksgiving Day", true)]
         [InlineData("Day After Thanksgiving", true)]
+        [InlineData("Jasons Birthday", true)]
         public void PaidHolidayContentTest(string name, bool expected)
         {
             // arrange
@@ -47,7 +48,7 @@ namespace helper_dates_tests
             // act
             var count = _businessConfig.PaidHolidays.Count;
             // assert
-            Assert.Equal(9, count);
+            Assert.Equal(10, count);
         }
     }
 }
