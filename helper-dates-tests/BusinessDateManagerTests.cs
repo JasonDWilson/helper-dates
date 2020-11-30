@@ -1,4 +1,6 @@
 ﻿using jwpro.DateHelper.Configuration;
+using jwpro.DateHelper.Domain;
+using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Managers;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -24,6 +26,8 @@ namespace helper_dates_tests
             var businessConfig = new BusinessDateManagerConfiguration();
             config.GetSection("BusinessDateManagerConfiguration").Bind(businessConfig);
             _manager = new BusinesDateManager(businessConfig);
+            _manager.PaidHolidays
+                .Add(new PaidHoliday("Jasons Birthday", (string year) => DateTime.Parse($"12/21/{year}")));
         }
 
         [Theory]
@@ -45,7 +49,40 @@ namespace helper_dates_tests
         }
 
         [Theory]
-        [InlineData("12/21/2020", false)]
+        [InlineData(null, "Christmas_Day", "12/25/2020")]
+        [InlineData("Christmas Day", null, "12/25/2020")]
+        [InlineData("Christmas Eve", null, "12/24/2020")]
+        [InlineData(null, "Independence_Day", "7/4/2020")]
+        [InlineData("Independence Day", null, "7/4/2020")]
+        [InlineData(null, "Labor_Day", "9/7/2020")]
+        [InlineData("Labor Day", null, "9/7/2020")]
+        [InlineData(null, "Memorial_Day", "5/25/2020")]
+        [InlineData("Memorial Day", null, "5/25/2020")]
+        [InlineData(null, "New_Years_Day", "1/1/2020")]
+        [InlineData("New Years Day", null, "1/1/2020")]
+        [InlineData("New Years Eve", null, "12/31/2020")]
+        [InlineData(null, "Thanksgiving_Day", "11/26/2020")]
+        [InlineData("Thanksgiving Day", null, "11/26/2020")]
+        [InlineData("Day After Thanksgiving", null, "11/27/2020")]
+        [InlineData("Jasons Birthday", null, "12/21/2020")]
+        public void GetPaidHolidayDateTest(string name, string specialName, DateTime expected)
+        {
+            // arrange
+            DateTime? actual = DateTime.Now;
+            SpecialDate special = 0;
+            if(!string.IsNullOrWhiteSpace(specialName))
+                special = (SpecialDate)Enum.Parse(typeof(SpecialDate), specialName);
+            // act
+            if(!string.IsNullOrWhiteSpace(specialName))
+                actual = _manager.GetPaidHolidayDate(special, "2020");
+            else
+                actual = _manager.GetPaidHolidayDate(name, "2020");
+            // assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("12/22/2020", false)]
         [InlineData("12/25/2020", true)]
         [InlineData("7/4/2020", true)]
         [InlineData("9/7/2020", true)]
@@ -54,6 +91,7 @@ namespace helper_dates_tests
         [InlineData("12/31/2020", true)]
         [InlineData("11/26/2020", true)]
         [InlineData("11/27/2020", true)]
+        [InlineData("12/21/2020", true)]
         public void IsPaidHolidayTest(string input, bool expected)
         {
             // arrange

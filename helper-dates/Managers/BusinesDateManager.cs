@@ -1,5 +1,6 @@
 ﻿using jwpro.DateHelper.Configuration;
 using jwpro.DateHelper.Domain;
+using jwpro.DateHelper.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -103,6 +104,23 @@ namespace jwpro.DateHelper.Managers
 
             return Math.Round(hours - modifiedHours, 2);
         }
+
+        public DateTime? GetPaidHolidayDate(string name, string year)
+        {
+            var holiday = PaidHolidays.FirstOrDefault(x => x.Name == name);
+            if(holiday != null)
+                return holiday.GetDate(year);
+            return null;
+        }
+
+        public DateTime? GetPaidHolidayDate(SpecialDate special, string year)
+        {
+            var holiday = PaidHolidays.FirstOrDefault(x => x.AssociatedSpecialDate == special);
+            if(holiday != null)
+                return holiday.GetDate(year);
+            return null;
+        }
+
 
         public bool IsPaidHoliday(DateTime input)
         {
