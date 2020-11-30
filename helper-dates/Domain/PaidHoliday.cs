@@ -1,5 +1,7 @@
 ﻿using jwpro.DateHelper.Enums;
 using jwpro.DateHelper.Helpers;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace jwpro.DateHelper.Domain
 {
     public class PaidHoliday
     {
+        private string _dateCalculationString;
         private string _name;
 
         public PaidHoliday()
@@ -53,6 +56,18 @@ namespace jwpro.DateHelper.Domain
         public SpecialDate AssociatedSpecialDate { get; set; }
 
         public Func<string, DateTime> DateCalculation { get; set; }
+
+        public string DateCalculationString
+        {
+            get => _dateCalculationString;
+            set
+            {
+                var options = ScriptOptions.Default.AddReferences("System").AddImports("System");
+                var task = CSharpScript.EvaluateAsync<Func<string, DateTime>>(value, options);
+                DateCalculation = task.GetAwaiter().GetResult();
+                _dateCalculationString = value;
+            }
+        }
 
         public string Name
         {

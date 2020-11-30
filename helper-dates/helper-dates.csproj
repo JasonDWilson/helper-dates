@@ -19,4 +19,8 @@
     <PackageReleaseNotes>Added business functions to BusinessDateManager class</PackageReleaseNotes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.8.0" />
+  </ItemGroup>
+
 </Project>

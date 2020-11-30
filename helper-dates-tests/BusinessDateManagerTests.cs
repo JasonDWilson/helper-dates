@@ -26,8 +26,8 @@ namespace helper_dates_tests
             var businessConfig = new BusinessDateManagerConfiguration();
             config.GetSection("BusinessDateManagerConfiguration").Bind(businessConfig);
             _manager = new BusinesDateManager(businessConfig);
-            _manager.PaidHolidays
-                .Add(new PaidHoliday("Jasons Birthday", (string year) => DateTime.Parse($"12/21/{year}")));
+            //_manager.PaidHolidays
+            //    .Add(new PaidHoliday("Jasons Birthday", (string year) => new DateTime(Int16.Parse(year), 12, 21)));
         }
 
         [Theory]
