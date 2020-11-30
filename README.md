@@ -85,12 +85,21 @@ using jwpro.DateHelper.Managers;
 	"BusinessDayEnd":  "17:00",
 	"PaidHolidays": [
 		{
-			"AssociatedSpecialDate": "Thanksgiving_Day"
+			"AssociatedSpecialDate": "Christmas_Day"
 		},
 		{
-			"Name": "Day After Thanksgiving",
-			"RelatedSpecialDate": "Thanksgiving_Day",
-			"RelatedSpecialDateOffset": 1
+			"Name": "Christmas Eve",
+			"RelatedSpecialDate": "Christmas_Day",
+			"RelatedSpecialDateOffset": -1
+		},
+		{
+			"AssociatedSpecialDate": "Independence_Day"
+		},
+		{
+			"AssociatedSpecialDate": "Labor_Day"
+		},
+		{
+			"AssociatedSpecialDate": "Memorial_Day"
 		},
 		{
 			"Name": "New Years Eve",
@@ -99,6 +108,18 @@ using jwpro.DateHelper.Managers;
 		},
 		{
 			"AssociatedSpecialDate": "New_Years_Day"
+		},
+		{
+			"AssociatedSpecialDate": "Thanksgiving_Day"
+		},
+		{
+			"Name": "Day After Thanksgiving",
+			"RelatedSpecialDate": "Thanksgiving_Day",
+			"RelatedSpecialDateOffset": 1
+		},
+		{
+			"Name": "Jasons Birthday",
+			"DateCalculationString": "(string year) => new DateTime(Int16.Parse(year), 12, 21)"
 		}
 	]
 }
@@ -107,6 +128,7 @@ using jwpro.DateHelper.Managers;
 	- An **AssociatedSpecialDate** that matches a value on the **SpecialDate** enum or
 	- A **Name** and a **RelatedSpecialDate** with an appropriate **RelatedSpecialDateOffset** or
 	- A **Name** and a **DateCalculation**
+		- **DateCalculation** can be declared in json using **DateCalculationString**
 5. The values can **BusinessDateManagerConfiguration** can be configured to be injected in the **BusinessDateManager** like this:
 ```csharp
   _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -129,6 +151,8 @@ using jwpro.DateHelper.Managers;
     var paidHoliday = _manager.PaidHolidays.FirstOrDefault(x => x.AssociatedSpecialDate == SpecialDate.Thanksgiving_Day);
     DateTime thanksgiving = paidHoliday.GetDate(year: "2020"); 
 ```
+- Other Functions:
+	- **GetPaidHolidayDate**
 
 *Would love for others to contribute*
 
