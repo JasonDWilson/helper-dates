@@ -5,18 +5,18 @@
     <RootNamespace>jwpro.DateHelper</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <Version>0.0.5</Version>
+    <Version>0.1.0</Version>
     <Authors>Jason D Wilson</Authors>
     <Company>jwpro</Company>
     <Description>A library with a number of date related helper functions and extenstions.</Description>
-    <Copyright>2020</Copyright>
+    <Copyright>2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/JasonDWilson/helper-dates</PackageProjectUrl>
     <RepositoryUrl>https://github.com/JasonDWilson/helper-dates</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>dates helper holidays business hours weekends weekdays</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Added DateCalculationString to PaidHolidays to allow definition of DateCalculation using a string.  Allows declaration in a json file</PackageReleaseNotes>
+    <PackageReleaseNotes>Added IsBusinessDate method to manager and extracted an interface</PackageReleaseNotes>
     <AssemblyVersion>0.0.5.0</AssemblyVersion>
     <FileVersion>0.0.5.0</FileVersion>
   </PropertyGroup>

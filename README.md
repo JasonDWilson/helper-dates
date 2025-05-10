@@ -153,6 +153,7 @@ using jwpro.DateHelper.Managers;
 ```
 - Other Functions:
 	- **GetPaidHolidayDate**
+	- **IsBusinessDate**
 
 *Would love for others to contribute*
 
