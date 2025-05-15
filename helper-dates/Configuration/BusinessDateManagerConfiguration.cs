@@ -41,6 +41,6 @@ namespace jwpro.DateHelper.Configuration
 			}
 		}
 
-		public List<PaidHoliday> PaidHolidays { get; set; } = new List<PaidHoliday>();
+		public List<PaidHoliday> PaidHolidays { get; set; }
 	}
 }

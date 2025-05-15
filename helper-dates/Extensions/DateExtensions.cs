@@ -15,6 +15,8 @@ namespace jwpro.DateHelper.Extensions
 
 		public static bool IsIndependenceDay(this DateTime input) { return SpecialDateHelper.IsIndependenceDay(input); }
 
+		public static bool IsJuneteenthDay(this DateTime input) { return SpecialDateHelper.IsJuneteenth(input); }
+
 		public static bool IsLaborDay(this DateTime input) { return SpecialDateHelper.IsLaborDay(input); }
 
 		public static bool IsMartinLutherKingJrDay(this DateTime input)

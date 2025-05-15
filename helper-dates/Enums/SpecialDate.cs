@@ -6,6 +6,7 @@
 		Columbus_Day = 101120,
 		Custom,
 		Independence_Day = 70420,
+		Juneteenth_Day = 61920,
 		Labor_Day = 90720,
 		Martin_Luther_King_Jr_Day = 12020,
 		Memorial_Day = 52520,

@@ -162,6 +162,12 @@ namespace jwpro.DateHelper.Managers
 			return null;
 		}
 
+		public bool IsAfterHours(DateTime input)
+		{
+			DateTime testDate = DateTime.Parse($"{input:yyyy-MM-dd} {_config.BusinessDayEnd}");
+			return input >= testDate;
+		}
+
 		public bool IsBusinessDay(DateTime input)
 		{
 			// Check if the date is a weekend
@@ -182,7 +188,7 @@ namespace jwpro.DateHelper.Managers
 		{
 			foreach(PaidHoliday holiday in _config.PaidHolidays)
 			{
-				if(holiday.GetDate(input.Year.ToString()) == input)
+				if(holiday.GetDate(input.Year.ToString()) == input.Date)
 				{
 					return true;
 				}

@@ -5,7 +5,7 @@
     <RootNamespace>jwpro.DateHelper</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <Version>0.1.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Jason D Wilson</Authors>
     <Company>jwpro</Company>
     <Description>A library with a number of date related helper functions and extenstions.</Description>
@@ -16,13 +16,24 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>dates helper holidays business hours weekends weekdays</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Added IsBusinessDate method to manager and extracted an interface</PackageReleaseNotes>
-    <AssemblyVersion>0.0.5.0</AssemblyVersion>
-    <FileVersion>0.0.5.0</FileVersion>
+    <PackageReleaseNotes>Added  IsAfterHours</PackageReleaseNotes>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.8.0" />
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.13.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.4" />
   </ItemGroup>
 
 </Project>

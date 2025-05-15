@@ -47,6 +47,16 @@ namespace jwpro.DateHelper.Helpers
 			return DateTime.Parse($"7/4/{year}");
 		}
 
+		public static DateTime GetJuneteenth(string  year)
+		{
+			if(string.IsNullOrWhiteSpace(year))
+			{
+				year = DateTime.Now.Year.ToString();
+			}
+
+			return DateTime.Parse($"6/19/{year}");
+		}
+
 		public static DateTime GetLaborDay(string year)
 		{
 			if(string.IsNullOrWhiteSpace(year))
@@ -133,6 +143,8 @@ namespace jwpro.DateHelper.Helpers
 					return SpecialDateHelper.GetColumbusDay(year);
 				case SpecialDate.Independence_Day:
 					return SpecialDateHelper.GetIndependenceDay(year);
+				case SpecialDate.Juneteenth_Day:
+					return SpecialDateHelper.GetJuneteenth(year);
 				case SpecialDate.Labor_Day:
 					return SpecialDateHelper.GetLaborDay(year);
 				case SpecialDate.Martin_Luther_King_Jr_Day:
@@ -189,27 +201,32 @@ namespace jwpro.DateHelper.Helpers
 			return DateTime.Parse($"11/11/{year}");
 		}
 
-		public static bool IsChristmasDay(DateTime input) { return input == GetChristmasDay(input.Year.ToString()); }
+		public static bool IsChristmasDay(DateTime input)
+		{ return input.Date == GetChristmasDay(input.Year.ToString()); }
 
-		public static bool IsChristmasEve(DateTime input) { return input == GetChristmasEve(input.Year.ToString()); }
+		public static bool IsChristmasEve(DateTime input)
+		{ return input.Date == GetChristmasEve(input.Year.ToString()); }
 
-		public static bool IsColumbusDay(DateTime input) { return input == GetColumbusDay(input.Year.ToString()); }
+		public static bool IsColumbusDay(DateTime input) { return input.Date == GetColumbusDay(input.Year.ToString()); }
 
 		public static bool IsIndependenceDay(DateTime input)
-		{ return input == GetIndependenceDay(input.Year.ToString()); }
+		{ return input.Date == GetIndependenceDay(input.Year.ToString()); }
 
-		public static bool IsLaborDay(DateTime input) { return input == GetLaborDay(input.Year.ToString()); }
+		public static bool IsJuneteenth(DateTime input) { return input.Date == GetJuneteenth(input.Year.ToString()); }
+
+		public static bool IsLaborDay(DateTime input) { return input.Date == GetLaborDay(input.Year.ToString()); }
 
 		public static bool IsMartinLutherKingJrDay(DateTime input)
-		{ return input == GetMartinLutherKingJrDay(input.Year.ToString()); }
+		{ return input.Date == GetMartinLutherKingJrDay(input.Year.ToString()); }
 
-		public static bool IsMemorialDay(DateTime input) { return input == GetMemorialDay(input.Year.ToString()); }
+		public static bool IsMemorialDay(DateTime input) { return input.Date == GetMemorialDay(input.Year.ToString()); }
 
-		public static bool IsNewYearsDay(DateTime input) { return input == GetNewYearsDay(input.Year.ToString()); }
+		public static bool IsNewYearsDay(DateTime input) { return input.Date == GetNewYearsDay(input.Year.ToString()); }
 
-		public static bool IsNewYearsEve(DateTime input) { return input == GetNewYearsEve(input.Year.ToString()); }
+		public static bool IsNewYearsEve(DateTime input) { return input.Date == GetNewYearsEve(input.Year.ToString()); }
 
-		public static bool IsPresidentsDay(DateTime input) { return input == GetPresidentsDay(input.Year.ToString()); }
+		public static bool IsPresidentsDay(DateTime input)
+		{ return input.Date == GetPresidentsDay(input.Year.ToString()); }
 
 		public static bool IsSpecialDate(DateTime input)
 		{
@@ -230,12 +247,12 @@ namespace jwpro.DateHelper.Helpers
 
 
 		public static bool IsThanksgivingDay(DateTime input)
-		{ return input == GetThanksgivingDay(input.Year.ToString()); }
+		{ return input.Date == GetThanksgivingDay(input.Year.ToString()); }
 
 		public static bool IsThanksgivingDayAfter(DateTime input)
-		{ return input == GetThanksgivingDayAfter(input.Year.ToString()); }
+		{ return input.Date == GetThanksgivingDayAfter(input.Year.ToString()); }
 
-		public static bool IsVeteransDay(DateTime input) { return input == GetVeteransDay(input.Year.ToString()); }
+		public static bool IsVeteransDay(DateTime input) { return input.Date == GetVeteransDay(input.Year.ToString()); }
 
 		public static bool IsWeekDay(DateTime input) { return !IsWeekEnd(input); }
 

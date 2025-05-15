@@ -13,6 +13,8 @@ namespace jwpro.DateHelper.Managers
 
 		DateTime? GetPaidHolidayDate(string name, string year);
 
+		bool IsAfterHours(DateTime input);
+
 		bool IsBusinessDay(DateTime input);
 
 		bool IsPaidHoliday(DateTime input);
