@@ -46,7 +46,7 @@ namespace helper_dates_tests
 			// act
 			int count = _businessConfig.PaidHolidays.Count;
 			// assert
-			Assert.Equal(10, count);
+			Assert.Equal(11, count);
 		}
 	}
 }
